@@ -1,0 +1,48 @@
+body {
+	background: #f9f1f1;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+	margin: 0 auto;
+	margin-top: 20px;
+	max-width: 800px;
+	text-align: center;
+}
+
+h1 {
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+h3 {
+	font-weight: bold;
+}
+
+#uneaten-div {
+	float: left;
+}
+
+#eaten-div {
+	float: right;
+}
+
+.create-form {
+	clear: both;
+}
+
+.uneaten-burger {
+	padding: 20px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	background: #d9d1d1
+}
+
+.eaten-burger {
+	padding: 5px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	background: #d9d1d1;
+	text-decoration: line-through;
+}
