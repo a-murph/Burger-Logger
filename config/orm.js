@@ -1,18 +1,18 @@
 var db = require("./connection.js");
 
 var orm = {
-	selectAll: function() {
+	selectAll: function(cb) {
 		db.query(
 			"SELECT * FROM burgers",
 			function(err, data) {
 				if (err) throw err;
 
-				return data;
+				cb(data);
 			}
 		);
 	},
 
-	insertOne: function(newBurger) {
+	insertOne: function(newBurger, cb) {
 		db.query(
 			"INSERT INTO burgers (burger_name) VALUES (?)",
 			{
@@ -21,12 +21,12 @@ var orm = {
 			function(err, data) {
 				if (err) throw err;
 
-				return data;
+				cb(data);
 			}
 		);
 	},
 
-	updateOne: function(burger) {
+	updateOne: function(burger, cb) {
 		db.query(
 			"UPDATE burgers SET ? WHERE ?",
 			{
@@ -38,7 +38,7 @@ var orm = {
 			function(err, data) {
 				if (err) throw err;
 
-				return data;
+				cb(data)
 			}
 		);
 	}
