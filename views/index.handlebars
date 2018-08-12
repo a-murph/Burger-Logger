@@ -1,8 +1,10 @@
 <div id="uneaten-div">
 	<ul id="uneaten-list">
 		{{#each uneaten}}
-			<li class="uneaten-burger">{{this.burger_name}}</li>
-			<button class="eat-button" data-id="{{this.id}}">Eat!</button>
+			<li class="uneaten-burger">
+				{{this.burger_name}}
+				<button class="eat-button" data-id="{{this.id}}">Eat!</button>
+			</li>
 		{{/each}}
 	</ul>
 </div>
@@ -17,5 +19,39 @@
 
 <form>
 	<input type="text" name="burgerName" id="burgerName" placeholder="New Burger Name">
-	<input type="submit" id="submitBurger">
+	<button id="submitBurger">Submit</button>
 </form>
+
+<script type="javascript">
+	$(function() {
+		$(document).on("click", "#submitBurger", function(event) {
+			event.preventDefault();
+
+			var burger = {
+				name: $("#burgerName").val().trim()
+			};
+
+			$.ajax("/", {
+				type: "POST",
+				data: burger
+			}).then(function(data) {
+				console.log(data);
+				location.reload();
+			});
+		});
+
+		$(document).on("click", ".eat-button", function(event) {
+			var burger = {
+				eaten: true,
+				id: $(this).data("id")
+			};
+
+			$.put("/", burger)
+				.then(function(data) {
+					console.log(data);
+					
+					location.reload();
+				});
+		});
+	});
+</script>

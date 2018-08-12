@@ -16,7 +16,7 @@ var orm = {
 		db.query(
 			"INSERT INTO burgers (burger_name) VALUES (?)",
 			{
-				burger_name: newBurger
+				burger_name: newBurger.name
 			},
 			function(err, data) {
 				if (err) throw err;
@@ -30,7 +30,6 @@ var orm = {
 		db.query(
 			"UPDATE burgers SET ? WHERE ?",
 			{
-				burger_name: burger.name,
 				eaten: burger.eaten
 			}, {
 				id: burger.id

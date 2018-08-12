@@ -17,24 +17,20 @@ router.get("/", function(req, res) {
 			}
 		}
 
-		console.log({ eaten: eaten, uneaten: uneaten });
-		
-
 		res.render("index", { eaten: eaten, uneaten: uneaten });
 	});
 });
 
 router.post("/", function(req, res) {
-	burger.insert(req.body.burger, function(data) {
+	burger.insert(req.body.name, function(data) {
 		res.json(data);
 	});
 });
 
-router.put("/:id", function(req, res) {
+router.put("/", function(req, res) {
 	var updated = {
-		name: req.body.burger,
 		eaten: req.body.eaten,
-		id: req.params.id
+		id: req.body.id
 	}
 
 	burger.update(updated, function(data) {
