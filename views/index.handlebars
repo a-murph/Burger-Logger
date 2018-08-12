@@ -1,0 +1,21 @@
+<div id="uneaten-div">
+	<ul id="uneaten-list">
+		{{#each uneaten}}
+			<li class="uneaten-burger">{{this.burger_name}}</li>
+			<button class="eat-button" data-id="{{this.id}}">Eat!</button>
+		{{/each}}
+	</ul>
+</div>
+
+<div id="eaten-div">
+	<ul id="eaten-list">
+		{{#each eaten}}
+			<li class="eaten-burger">{{this.burger_name}}</li>
+		{{/each}}
+	</ul>
+</div>
+
+<form>
+	<input type="text" name="burgerName" id="burgerName" placeholder="New Burger Name">
+	<input type="submit" id="submitBurger">
+</form>

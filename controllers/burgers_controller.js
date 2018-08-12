@@ -5,7 +5,22 @@ var router = express.Router();
 
 router.get("/", function(req, res) {
 	burger.select(function(data) {
-		res.render("index", { burgers: data });
+		var eaten = [];
+		var uneaten = [];
+
+		//separate eaten burgers from uneaten
+		for (var i = 0; i < data.length; i++) {
+			if (data[i].eaten) {
+				eaten.push(data[i]);
+			} else {
+				uneaten.push(data[i]);
+			}
+		}
+
+		console.log({ eaten: eaten, uneaten: uneaten });
+		
+
+		res.render("index", { eaten: eaten, uneaten: uneaten });
 	});
 });
 
