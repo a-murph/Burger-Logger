@@ -22,7 +22,10 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-	burger.insert(req.body.name, function(data) {
+	console.log(req.body);
+	console.log(req.body.burger_name);
+	
+	burger.insert(req.body.burger_name, function(data) {
 		res.json(data);
 	});
 });

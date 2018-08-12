@@ -13,27 +13,31 @@ var orm = {
 	},
 
 	insertOne: function(newBurger, cb) {
-		db.query(
+		var q = db.query(
 			"INSERT INTO burgers (burger_name) VALUES (?)",
-			{
-				burger_name: newBurger.name
-			},
+			[
+				newBurger
+			],
 			function(err, data) {
 				if (err) throw err;
 
 				cb(data);
 			}
 		);
+
+		console.log(q.sql);
 	},
 
 	updateOne: function(burger, cb) {
 		db.query(
 			"UPDATE burgers SET ? WHERE ?",
-			{
-				eaten: burger.eaten
-			}, {
-				id: burger.id
-			},
+			[
+				{
+					eaten: burger.eaten
+				}, {
+					id: burger.id
+				}
+			],
 			function(err, data) {
 				if (err) throw err;
 
